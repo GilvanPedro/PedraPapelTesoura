@@ -12,16 +12,32 @@ public class Main {
         for (int i = 0; i<=9; i++){
             System.out.print("\r"+carregar);
             Thread.sleep(500);
-            carregar+= "||";
+            carregar += "||";
         }
 
         while(!opc.equals("SAIR")){
             Regras regras =  new Regras();
-            System.out.print("\nDigite SAIR para encerrar o jogo\nPedra\nPapel\nTesoura\nDigite a sua jogada:");
+            System.out.print("\nDigite SAIR para encerrar o jogo\nDigite Regras para ver como jogar\nPedra\nPapel\nTesoura\nLagarto\nSpock\nDigite a sua jogada: ");
             opc = sc.nextLine().toUpperCase();
 
-            regras.computador();
-            System.out.println(regras.jogoAcontecendo(opc));
+            if(opc.equals("REGRAS")){
+                System.out.print("""
+                                
+                        Tesoura corta Papel
+                        Papel cobre Pedra
+                        Pedra esmaga Lagarto
+                        Lagarto envenena Spock
+                        Spock quebra Tesoura
+                        Tesoura decapita Lagarto
+                        Lagarto come Papel
+                        Papel refuta Spock
+                        Spock vaporiza Pedra
+                        Pedra quebra Tesoura
+                        """);
+            } else{
+                regras.computador();
+                System.out.println(regras.jogoAcontecendo(opc));
+            }
 
         }
 
